@@ -8,7 +8,7 @@
 	SELECT *
 	FROM (SELECT * FROM tbl_product
 	      ORDER BY p_good DESC)
-	WHERE rownum <= 6
+	WHERE rownum <= 3
 	]]>
 	 
 </select>

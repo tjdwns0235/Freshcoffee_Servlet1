@@ -11,7 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.freshcoffee.action.Action;
 import com.freshcoffee.action.ActionForward;
+import com.freshcoffee.action.ConstractAction;
+import com.freshcoffee.action.IdCheckAction;
 import com.freshcoffee.action.IndexAction;
+import com.freshcoffee.action.MemberAction;
 
 /**
  * Servlet implementation class FrontController
@@ -44,6 +47,15 @@ public class FrontController extends HttpServlet {
 		
 		if (command.contentEquals("/index.freshcoffee")) {
 			action = new IndexAction();
+			forward = action.excute(request,response);
+		} else if (command.contentEquals("/constract.freshcoffee")) {
+			action = new ConstractAction();
+			forward = action.excute(request,response);
+		} else if (command.contentEquals("/member.freshcoffee")) {
+			action = new MemberAction();
+			forward = action.excute(request,response);
+		}else if (command.contentEquals("/idCheck.freshcoffee")) {
+			action = new IdCheckAction();
 			forward = action.excute(request,response);
 		}
 		

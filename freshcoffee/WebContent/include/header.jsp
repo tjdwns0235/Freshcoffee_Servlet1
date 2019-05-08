@@ -26,7 +26,7 @@
 				<div class="header_member">
 					<ul>
 						<li><a href="#">LOGIN</a></li>
-						<li><a href="#">JOIN</a></li>
+						<li><a href="${path}/constract.freshcoffee">JOIN</a></li>
 						<li><a href="#">MYPage</a></li>
 					</ul>
 				</div>

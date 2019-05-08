@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ include file="include/header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -193,7 +194,7 @@
 	</style>
 </head>
 <body>
-	 <%@ include file="include/header.jsp" %>
+	
 	 
 
 	<nav>
@@ -265,8 +266,9 @@
 					
 					<div class="new_product"><span>Best Product</span></div>
 	
-						<c:forEach items="${bestList}" var="best">
+						
 						<div class="new_product_menu">
+								<c:forEach items="${bestList}" var="best">
 							<div class="new_product_box">
 				 				<a href="#"><img src="${path}/img/${best.p_img}" alt="상품이미지 케냐"></a>
 				 				<p class="name">
@@ -288,7 +290,7 @@
 				 				</li>
 				 		   		</div>
 				 		   </div>
-				 		   </c:forEach>
+				 		   		</c:forEach>
 
 		 
 		</div>
