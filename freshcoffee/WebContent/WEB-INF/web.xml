@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>freshcoffee</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+   <servlet>
+  <!--3.FrontController로 이동 = com.shs.controller.FrontController 이동  -->
+  	<servlet-name>FrontController</servlet-name>
+  	<servlet-class>com.freshcoffee.controller.FrontController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+ 	 <!--2. 값:insert.shs 
+ 	 if (값의 끝부분이 .shs로 끝나면){
+ 	  FrontController로 이동
+ 	 }  -->
+  	<servlet-name>FrontController</servlet-name>
+  	<url-pattern>*.freshcoffee</url-pattern>
+  </servlet-mapping>
+</web-app>
