@@ -3,23 +3,28 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.freshcoffee/mybatis.freshcoffeeMapper.xml">
-<select id="bestList" resultType="com.freshcoffee.dto.ProductDTO">
-	<![CDATA[
-	SELECT *
-	FROM (SELECT * FROM tbl_product
-	      ORDER BY p_good DESC)
-	WHERE rownum <= 3
-	]]>
-	 
-</select>
-<!--CDATA는 rownum <=6의 <를 태그로 보기때문에 이 값을 태그로 보기 위해 쓴다.  -->
-<select id="newList" resultType="com.freshcoffee.dto.ProductDTO">
-	<![CDATA[
-	SELECT *
-	FROM (SELECT * FROM tbl_product
-	      ORDER BY p_indate DESC)
-	WHERE rownum <=6
-	]]>
-</select>
+	<select id="bestList" resultType="com.freshcoffee.dto.ProductDTO">
+		<![CDATA[
+		SELECT *
+		FROM (SELECT * FROM tbl_product
+		      ORDER BY p_good DESC)
+		WHERE rownum <= 3
+		]]>
+		 
+	</select>
+		<!--CDATA는 rownum <=6의 <를 태그로 보기때문에 이 값을 태그로 보기 위해 쓴다.  -->
+	<select id="newList" resultType="com.freshcoffee.dto.ProductDTO">
+		<![CDATA[
+		SELECT *
+		FROM (SELECT * FROM tbl_product
+		      ORDER BY p_indate DESC)
+		WHERE rownum <=6
+		]]>
+	</select>
+
+	<select id="idCheck" parameterType="String" resultType="String">
+		SELECT id FROM tbl_member
+		WHERE id = #{id}
+	</select>
 	
 </mapper>
