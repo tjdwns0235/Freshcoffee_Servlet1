@@ -58,6 +58,32 @@ SELECT * FROM tbl_product;
 
 
 
+CREATE TABLE tbl_member(
+    id VARCHAR2(30) PRIMARY KEY,
+    pw VARCHAR2(30) NOT NULL,
+    name VARCHAR2(30) NOT NULL,
+    phone VARCHAR(30) NOT NULL,
+    email VARCHAR2(50) NOT NULL,
+    zipcode VARCHAR2(20) NOT NULL,
+    addr1 VARCHAR2 (200) NOT NULL,
+    addr2 VARCHAR2(200) NOT NULL,
+    bir1 VARCHAR2(200) NOT NULL,
+    bir2 VARCHAR2(200) NOT NULL,
+    bir3 VARCHAR2(200) NOT NULL,
+    regdate DATE DEFAULT SYSDATE
+);
+
+INSERT INTO tbl_member(id,pw,name,phone,email,zipcode, addr1, addr2, bir1, bir2,bir3)
+VALUES('user1', '1234','김성준', '01097919402', 'sungjoon0235@naver.com','56039', '전북순창군순창9길36-3','웰빙아트빌305호','2001','05','23');
+INSERT INTO tbl_member(id,pw,name,phone,email,zipcode, addr1, addr2, bir1, bir2,bir3)
+VALUES('user2', '1234','김다빛', '01083401935', 'dabok5012@icloud.com','12345', '전북장수군죽산1길','18-12','2002','03','01');
+INSERT INTO tbl_member(id,pw,name,phone,email,zipcode, addr1, addr2, bir1, bir2,bir3)
+VALUES('user3', '1234','김가은', '01044780235', 'writer0148@naver.com','56039', '전북순창군순창9길36-3','웰빙아트빌305호','2002','08','06');
+
+
+
+
+
 
 
 
