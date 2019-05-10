@@ -21,7 +21,7 @@
 		WHERE rownum <=6
 		]]>
 	</select>
-
+	<!--21.매개변수로 전달받은 id값을 sql문에 바인딩변수로 넣고 sql문을 실행 (DB로 이동)  -->
 	<select id="idCheck" parameterType="String" resultType="String">
 		SELECT id FROM tbl_member
 		WHERE id = #{id}

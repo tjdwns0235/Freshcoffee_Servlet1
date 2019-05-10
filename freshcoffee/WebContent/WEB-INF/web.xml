@@ -11,10 +11,15 @@
   </welcome-file-list>
    <servlet>
   <!--3.FrontController로 이동 = com.shs.controller.FrontController 이동  -->
+  <!--12. url이 *.fresgcoffee로 끝나는 경우 이동하는 frontcontroller를 정의
+  		  결론: url이 *freshcoffee로 끝나면 이동  -->
   	<servlet-name>FrontController</servlet-name>
   	<servlet-class>com.freshcoffee.controller.FrontController</servlet-class>
   </servlet>
   <servlet-mapping>
+  	<!--11. url의 끝부분이 .freshcoffe로 끝나면 FrontController로 이동 url: idCheck.freshcoffee 
+  			frontController로 이동 
+  			FrontController가 어디있는지 몰라요.. 위를 보세요  -->
  	 <!--2. 값:insert.shs 
  	 if (값의 끝부분이 .shs로 끝나면){
  	  FrontController로 이동

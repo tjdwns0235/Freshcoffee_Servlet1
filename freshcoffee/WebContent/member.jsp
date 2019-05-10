@@ -241,7 +241,7 @@
 	</header>
 
 	<section>
-		<form class="join_form" method="POST" action="">
+		<form class="join_form" method="POST" action="memberPlay.freshcoffee">
 			<div class="container">
 				<div class="join_content">
 					<div class="row_group">
@@ -308,13 +308,13 @@
 							<div class="bir_yy">
 								<span class="ps_box">
 									<input type="text" id="yy"
-									placeholder="년(4자)" class="int" maxlength="4">
+									placeholder="년(4자)" name="bir1" class="int" maxlength="4">
 								</span>
 							</div>
 
 							<div class="bir_mm">
 								<span class="ps_box">
-									<select id="mm" class="sel">
+									<select id="mm" class="sel" name="bir2" >
 										<option>월</option>
 										<option value="01">1</option>
 										<option value="02">2</option>
@@ -333,7 +333,7 @@
 							</div>
 							<div class="bir_dd">
 								<span class="ps_box">
-									<input type="text" id="dd" placeholder="일" class="int" maxlength="4" name="">
+									<input type="text" id="dd" placeholder="일" class="int" maxlength="4" name="bir3" >
 								</span>
 							</div>
 						</div>
@@ -354,9 +354,9 @@
 						<div class="join_row"><h3 class="join_title"><label for="email">이메일</label></h3></div>
 
 						<div id="email_wrap">
-							<input type="text" id="email" placeholder="email 주소." class="info_input email_id" name="">
+							<input type="text" id="email" placeholder="email 주소." class="info_input email_id" name="email">
 							<span> @ </span>
-							<input type="text" placeholder="URL" id="url" class="info_input email_url" name="">
+							<input type="text" placeholder="URL" id="url" class="info_input email_url" name="url">
 							<div class="join_div sel_url">
 								<select id="selmail" class="info_input">
 									<option value="directVal" selected="selected">직접입력</option>
@@ -382,62 +382,63 @@
 						</div>
 
 
-							<input type="text"   id="postcode" placeholder="우편번호">
-							<input type="button" id="search_btn" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-							<input type="text"   id="address" placeholder="주소"><br>
-							<input type="text"   id="detailAddress" placeholder="상세주소">
-							
-		
-		<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-		<script>
-		    function sample6_execDaumPostcode() {
-		        new daum.Postcode({
-		            oncomplete: function(data) {
-		                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
-		                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-		                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-		                var addr = ''; // 주소 변수
-		                var extraAddr = ''; // 참고항목 변수
+		<input type="text" id="sample6_postcode postcode" class="addrbtn" readonly="readonly" placeholder="우편번호">
+		<input type="button" id="addr_btn" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+		<input type="text" id="sample6_address address" readeonly="readonly" class="addrbtn" placeholder="주소"><br>
+		<input type="text" id="sample6_detailAddress detailAddress" placeholder="상세주소">
 
-		                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-		                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-		                    addr = data.roadAddress;
-		                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-		                    addr = data.jibunAddress;
-		                }
 
-		                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-		                if(data.userSelectedType === 'R'){
-		                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-		                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-		                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-		                        extraAddr += data.bname;
-		                    }
-		                    // 건물명이 있고, 공동주택일 경우 추가한다.
-		                    if(data.buildingName !== '' && data.apartment === 'Y'){
-		                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-		                    }
-		                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-		                    if(extraAddr !== ''){
-		                        extraAddr = ' (' + extraAddr + ')';
-		                    }
-		                    // 조합된 참고항목을 해당 필드에 넣는다.
-		                   
-		                
-		                } else {
-		                    document.getElementById("sample6_extraAddress").value = '';
-		                }
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script>
+    function sample6_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
 
-		                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-		                document.getElementById('sample6_postcode').value = data.zonecode;
-		                document.getElementById("sample6_address").value = addr;
-		                // 커서를 상세주소 필드로 이동한다.
-		                document.getElementById("sample6_detailAddress").focus();
-		            }
-		        }).open();
-		    }
-		</script>
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if(data.userSelectedType === 'R'){
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if(extraAddr !== ''){
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                    // 조합된 참고항목을 해당 필드에 넣는다.
+                    document.getElementById("sample6_extraAddress").value = extraAddr;
+                
+                } else {
+                    document.getElementById("sample6_extraAddress").value = '';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('sample6_postcode').value = data.zonecode;
+                document.getElementById("sample6_address").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("sample6_detailAddress").focus();
+            }
+        }).open();
+    }
+</script>
 
 						
 
@@ -475,6 +476,9 @@
 	</footer>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript">
+	$(document).ready(function)(){
+		
+	)}
 		$('#selmail').change(function(){
 			var eUrl = $(this).val();
 			if (eUrl == 'directVal') {
@@ -487,109 +491,65 @@
 			}
 		});
 	</script>
-		<script type="text/javascript">
+	<script type="text/javascript" src="js/validation.js"></script>
+	<script type="text/javascript">
+			//1. input에 값을 입력후 blur()하면 이벤트 발생
 			$(document).ready(function(){
+				2.// #id에  value값을 가져와 memId에 담음
 				$("#id").blur(function(){
-					var id = $.trim($(this).val());
+					var memId = $.trim($('#id').val());
+					//3. joinValidate의 checkId() 함수를 실행, memId를 매개변수로 보냄
+					// 7.checkId()함수를 실행 후 결과값(code, desc)을 
+					// 변수 checkresult에 담음
+					var checkResult = joinValidate.checkId(memId);
 					
-					var regEmpty = /\s/g; //공백문자
-					var reg = /[^a-z0-9-_.]+/g; //올바른 아이디 형식
+					alert(checkResult.code);
+					alert(checkResult.desc);
 					
-					if(id == "" || id.length == 0 ){
-						$(".error_next_box").eq(0).text("필수입력 정보에요")
-												  .css("display", "block")
-												  .css("color", "#FF3636");
-								return false;
-					} else if(id.match(regEmpty)){
-						$(".error_next_box").eq(0).text("공백없이 입력해주세요.")
-												  .css("display", "block")
-												  .css("color", "#FF3636");
-								return false;
-					} else if(reg.test(id)){
-						$(".error_next_box").eq(0).text("올바른 ID를 입력해주세요.")
-												  .css("display", "block")
-												  .css("color", "#FF3636");
+			
+					
+					if(checkResult.code != 0) {
+						// 8-1(실패). code값이 0이 아닌경우 => 유효한값 아님 경고메시지 출력!!
+						$(".error_next_box").eq(0).text(checkResult.desc)
+									   	    .css("display", "block")
+										    .css("color", "#FF3636");
 						return false;
-					} else if(id.length < 5 || id.length > 10) {
-						$(".error_next_box").eq(0).text("ID는 공백없이 5자이상 이여야 해요!")
-												  .css("display", "block")
-												  .css("color", "#FF3636");
-							return false;
-					}
-					//id
-					// 1) null
-					// 2) 정규식
-					// 3) 중복체크
-					
-					// id에 값이 있는 경우에만 ajax 동작!
-						ajaxCheck(id);
-				
-				});
-				function ajaxCheck(id){
-					$.ajax({
-						url: "idCheck.freshcoffee",
-						type: "POST",
-						dataType: "json",
-						data: "id=" +id,
-						success: function(data) {
-							if(data.message == "-1"){
-								$(".error_next_box").eq(0).text("이미 사용 중인 아이디가 있어요")
-														  .css("display", "block")
-														  .css("color", "#FF3636");
-								$("#error_next_box").select();
-							} else {
-								$(".error_next_box").eq(0).text("멋진 아이디인것 같아요!")
-														  .css("display", "block")
-														  .css("color", "#0000FF");
-								$("#pwd1").select();
-							}
-						},
-						error: function(){
-							alert("System Error!!!");
+					} else {
+						//8-2(성공). code값이 0인경우 => 유효한 값
+						//			중복값인지 Ajax로 검증 시작!
+						//9.ajaxCheck() 메서드실행, memId를 매개변수로 보냄
+						if(ajaxCheck(memId) == "1"){
+							//	31. ajaxCheck(memId)의 return값이 1이면 return true;
+							return true;
 						}
-					});
-				}
+					}
+					return false;				
+			});
 				
 				 $('#pwd1').blur(function(){
-					var pw = $.trim($(this).val());
-					
-					var regEmpty = /\s/g; //공백문자
-					var pwReg = RegExp(/^[a-zA=Z0-9]{4,12}$/); //비밀번호 체크
-					
-					if(pw == "" || pw.length == 0 ){
-						$(".error_next_box").eq(1).text("필수입력 정보에요")
-												  .css("display", "block")
-												  .css("color", "#FF3636");
-								return false;
-					} else if(pw.match(regEmpty)){
-						$(".error_next_box").eq(1).text("공백없이 입력해주세요!")
-												  .css("display", "block")
-												  .css("color", "#FF3636");
-								return false;
-					}else if(!pwReg.test(pw)){
-						$(".error_next_box").eq(1).text("올바른 비밀번호(4~12자)를 입력해주세요!")
-												  .css("display", "block")
-												  .css("color", "#FF3636");
-						return false;
-					} 
-					else {
-						$(".error_next_box").eq(1).text("사용가능한 비밀번호인것 같아요!")
-												  .css("display", "block")
-												  .css("color", "#0000FF");
+					 	var memPw = $.trim($('#pwd1').val());
+						var memRpw = $.trim($("#pwd2").val());
 						
-						var rpw = $.trim($("#pwd2").val());
-						if (rpw != null || rpw.length == 0) {
-							if (pw == rpw) {
-								$(".error_next_box").eq(2).text("비밀번호가 일치합니다!")
-								  .css("display", "block")
-								  .css("color", "#0000FF");
-							}
+						var checkResult = joinValidate.checkPw(memPw,memRpw);
+						
+						alert(checkResult.code);
+						alert(checkResult.desc);
+						
+						if(checkResult.code != 0) {
+							$(".error_next_box").eq(0).text(checkResult.desc)
+										   	    .css("display", "block")
+											    .css("color", "#FF3636");
+							return false;
+						} else {
+							$(".error_next_box").eq(0).text(checkResult.desc)
+										   	    .css("display", "block")
+											    .css("color", "#0000FF");
+							return true;
 						}
-					}
+						return false;
+				 });
 					
-					
-				}); 
-				
+			
 				 $('#pwd2').blur(function(){
 					var pw = $.trim($("#pwd1").val());
 					var rpw = $.trim($(this).val());
@@ -691,8 +651,18 @@
 					  .css("color", "#0000FF");
 				}
 			}); 
+			 //우편번호,주소 클릭시 다음 주소 창 출력
+			 $('.addrbtn').click(function(){
+				 var zipcode = $('.addrbtn').eq(0).val();
+				 var addr = $('.addrbtn').eq(1).val();
+				 alert(zipcode + "," + addr);
+				 
+				 if(zipcode == "" || addr == ""){
+					$("#addr_btn").click(); 
+				 }
+			 });
 				
-			 $("#email").blur(function(){
+			/*  $("#email").blur(function(){
 				var email = $.trim($(this).val());
 				var url = $.trim($("#url").val());
 				var regEmpty = /\s/g;
@@ -722,7 +692,7 @@
 					}
 				}
 			
-			}
+			)};
 			
 			$("#email").blur(function(){
 				var email = $.trim($(this).val());
@@ -754,7 +724,18 @@
 					}
 				}
 			
-			}
+			)}; */
+			
+			$('#sample6_address2').blur(function(){
+				var dAddr = $trim($(this).val());
+				
+				if(dAddr == "" || dAddr.length == 0){
+					$(".error_next_box").eq(6).text("필수 정보입니다!")
+									    .css("display", "block")
+									    .css("color", "#FF3636");
+				return false;
+				}
+			});
 			
 		}); 
 		
