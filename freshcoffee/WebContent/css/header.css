@@ -20,6 +20,16 @@
 		.inner_header_menu{
 			height: 35px;
 		}
+		.dropdown {
+			display:none;
+			
+		}
+		.dropdown > a {
+			display:none;
+		}
+		.mypage:hover {
+			/* display: block; */
+		}
 		.header_sns{
 			height: 35px;
 			float: left;

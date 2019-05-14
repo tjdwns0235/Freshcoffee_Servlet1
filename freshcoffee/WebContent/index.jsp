@@ -8,17 +8,11 @@
 <title>Insert title here</title>
 <style type="text/css">
 		@import url('https://fonts.googleapis.com/css?family=Cute+Font');
-
-		
-
-		
 		 .inner_header2 ul > li  {
 			float: left;
 			text-align: center;
 			margin: 0px;
 			height: 85px;
-
-			
 		}
 		.inner_header2 {
 			padding: 0;

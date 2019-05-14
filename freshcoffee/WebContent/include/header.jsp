@@ -25,9 +25,22 @@
 				</div>
 				<div class="header_member">
 					<ul>
-						<li><a href="#">LOGIN</a></li>
-						<li><a href="${path}/constract.freshcoffee">JOIN</a></li>
-						<li><a href="#">MYPage</a></li>
+						<li><a href="#">로그인</a></li>
+						<li><a href="${path}/constract.freshcoffee">회원가입</a></li>
+						<li><a href="#">정보수정</a></li>
+						<li><a href="#" class="mypage">마이페이지</a>
+							<div class="dropdown">
+							     <a href="#" >나의 주문</a>
+							     <a href="#" >장비구니</a>
+							     <choose>
+								     <c:when test="${!empty sessionScope.loginUser}">
+									     <a href="pwUpdate.freshcoffee">비밀번호 수정</a>
+										 <a href="infoUpdate.freshcoffee">회원수정</a>
+										 <a href="dropMember.freshcoffee">회원탈퇴</a>
+									 </c:when>
+								 </choose>
+							</div>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -51,6 +64,19 @@
 			$('#topBtn').click(function(event) {
 				$('html, body').animate({scrollTop : 0}, 500);
 			});
+			/* $(document).on('click', 'logout_btn', function(){
+				$.ajax({
+					url: "logoutAjax",
+					type: "POST",
+					dataType: "json",
+					success: function(data) {
+						location.reload();
+					},
+					error: function() {
+						alert("System Error");
+					}
+				});
+			}); */
 		});
 	</script>
 </body>

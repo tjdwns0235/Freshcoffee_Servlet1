@@ -14,8 +14,11 @@ import com.freshcoffee.action.ActionForward;
 import com.freshcoffee.action.ConstractAction;
 import com.freshcoffee.action.IdCheckAction;
 import com.freshcoffee.action.IndexAction;
+import com.freshcoffee.action.InfoUpdateAction;
+import com.freshcoffee.action.LogoutAction;
 import com.freshcoffee.action.MemberAction;
 import com.freshcoffee.action.MemberPlayAction;
+import com.freshcoffee.action.PwUpdateAction;
 
 /**
  * Servlet implementation class FrontController
@@ -77,7 +80,23 @@ public class FrontController extends HttpServlet {
 			//   이동
 			action = new MemberPlayAction();
 			forward = action.excute(request,response);
+		}else if (command.contentEquals("/logoutAjax.freshcoffee")) {
+			action = new LogoutAction();
+			forward = action.excute(request,response);
+		}else if (command.contentEquals("/infoUpdate.freshcoffee")) {
+			action = new InfoUpdateAction();
+			forward = action.excute(request,response);
+		}else if (command.contentEquals("/pwfoUpdate.freshcoffee")) {
+			action = new PwUpdateAction();
+			forward = action.excute(request,response);
+		}else if (command.contentEquals("/dropMember.freshcoffee")) {
+			action = new DropMemberAction();
+			forward = action.excute(request,response);
+		}else if (command.contentEquals("/pwCheck.freshcoffee")) {
+			action = new PwCheckAction();
+			forward = action.excute(request,response);
 		}
+		
 		
 		
 	
