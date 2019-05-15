@@ -1,89 +1,90 @@
 var joinVaildate = {
 		//결과메시지 출력시 사용하는 Text
 		resultCode : {
-			empty_val: {
-				code:1,
-				desc : "필수입력 정보입니다."
+			empty_val : {
+				code : 1,
+				desc : '필수입력 정보입니다.'
 			},
 			space_length_val : {
-				code:2,
+				code : 2,
 				desc : '공백없이 입력해주세요.'
 			},
+			
 			//ID
 			success_id : {
-				code:0,
+				code : 0,
 				desc: '멋진 아이디네요'
 			},
 			invalid_id: {
-				code:3,
-				desc: '올바른 ID를 입력해주세요'
+				code : 3,
+				desc : '올바른 ID를 입력해주세요'
 			},
-			length_id: {
-				code:4,
+			length_id : {
+				code : 4,
 				desc: 'ID는 공백없이 6자 이상이여야 합니다'
 			},
 			overlap_id : {
-				code:5,
-				desc:'이미 사용 중인 ID 입니다. '
+				code : 5,
+				desc : '이미 사용 중인 ID 입니다. '
 			},
 			
 			//PW
-			success_pw: {
-				code:0,
-				desc: '사용가능한 비밀번호 입니다'
+			success_pw : {
+				code : 0,
+				desc : '사용가능한 비밀번호 입니다'
 			},
 			invalid_pw : {
-				code:3,
-				desc: '올바른 비밀번호(4~12자)를 입력해주세요.'
+				code : 3,
+				desc : '올바른 비밀번호(4~12자)를 입력해주세요.'
 			},
 			other_pw : {
-				code:4,
-				desc: '입력하신 비밀번호가 일치 하지 않습니다.'
+				code : 4,
+				desc : '입력하신 비밀번호가 일치 하지 않습니다.'
 			},
 			
 			//name
 			success_name : {
-				code:0,
-				desc: '멋진 이름이네요:)'
+				code : 0,
+				desc : '멋진 이름이네요:)'
 			},
 			invalid_name : {
-				code:3,
-				desc: '이름은 표준한글만 입력가능합니다.'
+				code : 3,
+				desc : '이름은 표준한글만 입력가능합니다.'
 			},
 			length_name : {
-				code:4,
-				desc: '이름은 2자이상 ~ 4자이하만 가능합니다.'
+				code : 4,
+				desc : '이름은 2자이상 ~ 4자이하만 가능합니다.'
 			},
 			
 			// phone 
-			success_phone: {
-				code:0,
+			success_phone : {
+				code : 0,
 				desc : '사용가능한 번호입니다.'
 			},
 			invalid_phone: {
-				code:3,
+				code : 3,
 				desc : '휴대폰 번호가 유효하지 않습니다.'
 			},
 			number_phone : {
-				code:4,
+				code : 4,
 				desc : '숫자만 입력해주세요.'
 			},
 			length_phone : {
-				code:5,
+				code : 5,
 				desc: '(-)없이 10, 11자로 입력해주세요.'
 			},
 			
 			// email
 			success_email : {
-				code:0,
-				desc: '사용가능한 이메일입니다'
+				code : 0,
+				desc : '사용가능한 이메일입니다'
 			},
 			invalid_email : {
-				code:3,
-				desc: '올바른 이메일을 입력해주세요.'
+				code : 3,
+				desc : '올바른 이메일을 입력해주세요.'
 			}
-			
 		},
+		
 		checkId : function(memId){
 			var regEmpty = /\s/g; //공백문자
 			var reg = /[^a-z0-9-_.]+/g; //올바른 아이디 형식
@@ -99,9 +100,9 @@ var joinVaildate = {
 				return this.resultCode.empty_val;
 			} else if(memId.match(regEmpty)){
 				return this.resultCode.space_length_val;
-			} else if(reg.test(id)){
+			} else if(reg.test(memId)){
 				return this.resultcode.invalid_id;
-			} else if(id.length < 5 || id.length > 10) {
+			} else if(memId.length < 5 || memId.length > 10) {
 				return this.resultcode.length_id;
 			} else {
 				// 5. 입력받은 값이 위의 유효성체크 4단계를 통과
@@ -112,51 +113,31 @@ var joinVaildate = {
 				//		>>> code:0, desc: '멋진 아이디네요
 				return this.resultCode.success_id;
 			}
-				
-			}
 			//id
 			// 1) null
 			// 2) 정규식
 			// 3) 중복체크
 			
 			// id에 값이 있는 경우에만 ajax 동작!
-				ajaxCheck(id);
-			},
+		},
+			
 			checkPw : function(memPw,memRpw){
 				var regEmpty = /\s/g; //공백문자
 				var pwReg = RegExp(/^[a-zA=Z0-9]{4,12}$/); //비밀번호 체크
 				
 				if(memPw == "" || memPw.length == 0 ){
 					return this.resultCode.empty_val;
-				} else if(pw.match(regEmpty)){
+				} else if(memPw.match(regEmpty)){
 					return this.resultCode.space_length_val;
-				}else if(!pwReg.test(pw)){
+				}else if(!pwReg.test(memPw)){
 					return this.resultCode.invalid_pw;
-				} 
-				else {					
+				}else {					
 					return this.resultCode.success_pw;
-					}
-			},
-			checkRpw : function(memPw, memRpw){
-				var regEmpty = /\s/g; //공백문자
-				var rpwReg = RegExp(/^[a-zA=Z0-9]{4,12}$/); //비밀번호 체크
-				
-				if(memRpw == "" || memRpw.length == 0 ){
-					return this.resultCode.empty_val;
-				} else if(memRpw.match(regEmpty)){
-					return this.resultCode.space_length_val;
-				}else if(!pwReg.test(memRpw)){
-					return this.resultCode.invalid_pw;
-				} 
-				else {					
-					return this.resultCode.success_pw;
-					}
-				
+				}
 			}
-			
-			
-				
-			
+		}
+
+
 //ID 중복체크
 function ajaxCheck(memId){
 	//10. ajax 시작!
@@ -165,12 +146,12 @@ function ajaxCheck(memId){
 	//	     데이터 포장 방법: json
 	//	     데이터 전달방법: POST방식
 	// 	     결론: web.xml 이동
-}
+
 	$.ajax({
 		url: "idCheck.freshcoffee",
 		type: "POST",
 		dataType: "json",
-		data: "id=" +memId,
+		data: "id="+memId,
 		success: function(data) {
 			//29.Action단에서 전송한  message, id를
 			// data 매개변수로 받음
@@ -192,45 +173,6 @@ function ajaxCheck(memId){
 			alert("System Error!!!");
 		}
 	});
+}
 
 	
-	function ajaxPwCheck() {
-		$.ajax({
-			url: 'pwCheck.freshcoffee',
-			type: 'POST',
-			dataType: 'json',
-			async: false;
-			data: 'id='+nowId+'&pw='+nowPw,
-			success: function(data) {
-				if (data.flag) {
-					$(".pwAjax").css('color', 'dodgerblue')
-									  .css('display', 'block')
-									  .test('비밀번호가 일치합니다');
-					return_val = true;
-				}
-				else {
-					$(".pwAjax").css('color', 'tomato')
-									  .css('display', 'block')
-									  .test('비밀번호가 일치하지 않습니다');
-					return_val = false;
-				}
-			},
-			error:function() {
-				alert("System Error!!!!");
-			}
-		});
-		return 
-	}
-
-	
-
-
-			
-
-
-
-
-
-
-
-
