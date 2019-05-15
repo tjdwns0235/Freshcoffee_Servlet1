@@ -34,9 +34,9 @@
 							     <a href="#" >장비구니</a>
 							     <choose>
 								     <c:when test="${!empty sessionScope.loginUser}">
-									     <a href="pwUpdate.freshcoffee">비밀번호 수정</a>
-										 <a href="infoUpdate.freshcoffee">회원수정</a>
-										 <a href="dropMember.freshcoffee">회원탈퇴</a>
+									     <a href="${path}/pwUpdate.freshcoffee">비밀번호 수정</a>
+										 <a href="${path}/infoUpdate.freshcoffee">회원수정</a>
+										 <a href="${path}/dropMember.freshcoffee">회원탈퇴</a>
 									 </c:when>
 								 </choose>
 							</div>

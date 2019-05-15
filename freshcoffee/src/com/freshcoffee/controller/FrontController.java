@@ -12,13 +12,16 @@ import javax.servlet.http.HttpServletResponse;
 import com.freshcoffee.action.Action;
 import com.freshcoffee.action.ActionForward;
 import com.freshcoffee.action.ConstractAction;
+import com.freshcoffee.action.DropMemberAction;
 import com.freshcoffee.action.IdCheckAction;
 import com.freshcoffee.action.IndexAction;
 import com.freshcoffee.action.InfoUpdateAction;
 import com.freshcoffee.action.LogoutAction;
 import com.freshcoffee.action.MemberAction;
 import com.freshcoffee.action.MemberPlayAction;
+import com.freshcoffee.action.PwCheckAction;
 import com.freshcoffee.action.PwUpdateAction;
+import com.freshcoffee.action.PwUpdatePlayAction;
 
 /**
  * Servlet implementation class FrontController
@@ -86,14 +89,20 @@ public class FrontController extends HttpServlet {
 		}else if (command.contentEquals("/infoUpdate.freshcoffee")) {
 			action = new InfoUpdateAction();
 			forward = action.excute(request,response);
-		}else if (command.contentEquals("/pwfoUpdate.freshcoffee")) {
+		}else if (command.contentEquals("/pwUpdate.freshcoffee")) {
 			action = new PwUpdateAction();
 			forward = action.excute(request,response);
 		}else if (command.contentEquals("/dropMember.freshcoffee")) {
 			action = new DropMemberAction();
 			forward = action.excute(request,response);
+		}else if (command.contentEquals("/pwUpdatePlay.freshcoffee")) {
+			action = new PwUpdatePlayAction();
+			forward = action.excute(request,response);
 		}else if (command.contentEquals("/pwCheck.freshcoffee")) {
 			action = new PwCheckAction();
+			forward = action.excute(request,response);
+		}else if (command.contentEquals("/dropMemberPlay.freshcoffee")) {
+			action = new DropMemberPlayAction();
 			forward = action.excute(request,response);
 		}
 		

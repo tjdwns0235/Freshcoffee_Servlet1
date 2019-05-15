@@ -7,20 +7,26 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class PwUpdateAction implements Action {
+import com.freshcoffee.dao.MemberDAO;
+import com.freshcoffee.dto.MemberDTO;
+
+public class DropMemberPlayAction implements Action {
 
 	@Override
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String url = "index.freshcoffee";
-//		HttpSession session = request.getSession(); 1번 방법
-//		
-//		session.getAttribute("loginUser.id");
+		String url ="index.freshcoffee";
+		HttpSession session = request.getSession();
 		
-		String pw = request.getParameter("newpw"); //새비밀번호의 Input Name이 newpw
+		MemberDTO mDto = (MemberDTO)session.getAttribute("loginUser");
 		
-		//패스워드 수정
+		String id =mDto.getId();
+		MemberDAO mDao = MemberDAO.getInstance();
+		int result = mDao.memDelete(id);
 		
+		if (result > 0) {
+			session.invalidate();
+		}
 		ActionForward forward = new ActionForward();
 		forward.setPath(url);
 		forward.setRedirect(true);
