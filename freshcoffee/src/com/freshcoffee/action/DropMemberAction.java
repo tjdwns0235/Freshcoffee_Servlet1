@@ -12,7 +12,7 @@ public class DropMemberAction implements Action {
 	@Override
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String url = "member_delete.freshcoffee";
+		String url = "member/member_delete.freshcoffee";
 		
 		HttpSession session = request.getSession(); 
 //		session.getAttribute("loginUser.id");

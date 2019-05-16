@@ -14,7 +14,7 @@ public class InfoUpdateAction implements Action {
 	@Override
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String url = "info_update.jsp";
+		String url = "member/info_update.jsp";
 		int result;
 		MemberDTO mDto = new MemberDTO();
 		

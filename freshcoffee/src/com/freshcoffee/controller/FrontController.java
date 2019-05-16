@@ -13,6 +13,7 @@ import com.freshcoffee.action.Action;
 import com.freshcoffee.action.ActionForward;
 import com.freshcoffee.action.ConstractAction;
 import com.freshcoffee.action.DropMemberAction;
+import com.freshcoffee.action.DropMemberPlayAction;
 import com.freshcoffee.action.IdCheckAction;
 import com.freshcoffee.action.IndexAction;
 import com.freshcoffee.action.InfoUpdateAction;
