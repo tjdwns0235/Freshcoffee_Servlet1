@@ -54,6 +54,7 @@
 		border:0;
 		float: right;
 		outline: none;
+		position: relative;
 	}
 	.btn:hover {
 		background-color: orange;
@@ -166,6 +167,13 @@
 		display: inline-block;
 		height: 24px;
 	}
+	#search_result {
+		width: 500px;
+		margin: 0px 0px;
+		display: inline;
+		
+	}
+	
 </style>
 </head>
 <body>
@@ -178,18 +186,24 @@
 				<div>
 					<div id="order_board">
 						<span>
-							<a href="#" id="orderNew">최신순</a>
+							<a href="${path}/boardList.freshcoffee?sort_type=new" id="orderNew">최신순</a>
 						</span>
 						<span>
-							<a href="#" id="orderGood">추천순</a>
+							<a href="${path}/boardList.freshcoffee?sort_type=good" id="orderGood">추천순</a>
 						</span>
 						<span>
-							<a href="#" id="orderReply">댓글순</a>
+							<a href="${path}/boardList.freshcoffee?sort_type=reply" id="orderReply">댓글순</a>
 						</span>
 						<span>
-							<a href="#" id="ordrCnt">조회순</a>
+							<a href="${path}/boardList.freshcoffee?sort_type=view" id="orderCnt">조회순</a>
 						</span>
 					</div>
+					
+					<div id="search_result">
+						<span class="search_span">"${keyword}</span>로 검색한 결과는 총
+						<span class="search_span">${totalCount}</span>건입니다.
+					</div>
+					
 					<button id="boardAdd" class="btn btn-Primary">게시글 등록</button>
 				</div>
 			</div>
@@ -401,13 +415,12 @@
 
 		<div id="div_search">
 			<select id="selsearch" name="selsearch">
-				<option value="3" selected="selected" >조건선택</option>
-				<option value="1">제목</option>
-				<option value="2">내용</option>
-				<option value="3">제목+내용</option>
+				<option value="1" selected="selected">제목+내용</option>
+				<option value="2">제목</option>
+				<option value="3">내용</option>
 				<option value="4">작성자</option>
 			</select>
-			<input type="text" placeholder="검색할내용을 입력해주세요!" name="searchboard" id="searchboard">
+			<input type="text" placeholder="검색할내용을 입력해주세요!" name="searchboard" id="search_board">
 			<a href="#" id="search_Btn" class="btn btn_Search">검색</a>
 		</div>
 
@@ -460,6 +473,20 @@
 			</div>
 		</div>
 	</section>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+	$(document).on("click", "#search_Btn", function(){
+		var search_option = $('#selsearch').val();
+		var keyword = $.trim($('#search_board').val());
+		alert(search_option + "," + keyword);
+		
+		if (keyword == null || keyword.length == 0) {
+			$('#search_board').focus();
+			$('#search_board').css('border', '1px solid rgb(231,2)')
+			return false;
+		}
+		location.href="${path}/boardList.freshcoffee?search_option="+search_option+"&keyword="+keyword;
+	});
+</script>
 </body>
 </html>
