@@ -37,8 +37,9 @@ public class BoardListAction implements Action {
 		if(request.getParameter("sort_type") != null) {
 			sort_type = request.getParameter("sort_type");
 		}
-		System.out.println("정렬타입 : " + sort_type);
 		criDto.setSort_type(sort_type);
+		System.out.println("정렬타입 : " + sort_type);
+		
 		
 		// 페이지 검색 설정
 		String search_option = null;
@@ -63,7 +64,7 @@ public class BoardListAction implements Action {
 		// 페이지네이션 생성
 		PageMakerDTO pageMaker = new PageMakerDTO();
 		pageMaker.setCriDto(criDto);
-		int totalCount = bDao.totalCount(criDto);
+		int totalCount = bDao.totalCount(criDto);  
 		pageMaker.setTotalCount(totalCount);
 		
 		
@@ -71,10 +72,10 @@ public class BoardListAction implements Action {
 		
 		
 		// view 단으로 게시글 목록 전송
-		request.setAttribute("list", list);
-		request.setAttribute("pageMaker", pageMaker);
-		request.setAttribute("totalCount", totalCount);
-		request.setAttribute("sort_type", sort_type);
+		request.setAttribute("list", list); //게시물 목
+		request.setAttribute("pageMaker", pageMaker);// 페이지 네이
+		request.setAttribute("totalCount", totalCount); // 게시글 총갯
+		request.setAttribute("sort_type", sort_type);// 게시글 정렬타
 		request.setAttribute("criDto", criDto);
 		
 		ActionForward forward = new ActionForward();

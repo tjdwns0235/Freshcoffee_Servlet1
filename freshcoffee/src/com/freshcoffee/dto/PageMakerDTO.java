@@ -3,7 +3,7 @@ package com.freshcoffee.dto;
 import com.freshcoffee.dto.CriteriaDTO;
 
 public class PageMakerDTO {
-	private int totalCount;                 // 전체 데이터 개수
+	private int totalCount;     //10            // 전체 데이터 개수
 	private int startPage;                  // 시작 페이지 번호
 	private int endPage;                    // 끝 페이지 번호
 	private boolean prev;                   // 이전 페이지
@@ -20,7 +20,7 @@ public class PageMakerDTO {
 	public void setTotalCount(int totalCount) {
 		this.totalCount = totalCount;
 		
-		calcData();
+		calcData(); 
 	}
 	
 	private void calcData() {

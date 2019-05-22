@@ -16,9 +16,6 @@ public class InfoUpdateAction implements Action {
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String url = "member/info_update.jsp";
-		int result;
-		MemberDTO mDto = new MemberDTO();
-		MemberDAO mDao = new MemberDAO();
 		
 		// 로그인 된 유저만 회원수정 가능
 		HttpSession session = request.getSession();
@@ -28,16 +25,9 @@ public class InfoUpdateAction implements Action {
 			url = "index.freshcoffee";
 		}
 		
-		if (result > 0) {
-			mDto = mDao.memOne(id);
-			
-			HttpSession session = request.getSession();
-			session.removeAttribute("loginUser");
-			session.setAttribute("loginUser", mDto);
-		}
 		ActionForward forward = new ActionForward();
 		forward.setPath(url);
-		forward.setRedirect(true);
+		forward.setRedirect(false);
 		
 		return forward;
 	}

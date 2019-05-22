@@ -10,12 +10,13 @@ import com.freshcoffee.mybatis.SqlMapConfig;
 
 public class MemberDAO {
 	SqlSessionFactory sqlSessionFactory = SqlMapConfig.getSqlSession();
-	int result;
-	MemberDTO mDto = new MemberDTO();
-
 	SqlSession sqlSession;
+	int result = 0;
+	MemberDTO mDto = new MemberDTO();
 	boolean flag = false;
-	public MemberDAO(){}
+	
+	private MemberDAO(){}
+	
 	// 외부에서 빌려서 사용할 객체 생성(instance)
 	private static MemberDAO instance = new MemberDAO();
 	//외부에서 getInstance() 를 호출하면 객체를 빌려줌
@@ -52,74 +53,90 @@ public class MemberDAO {
 		//24. IdCheckAction 클래스로 "1" or "-1"값을  return값으로 보냄
 		return result;
 	}
+	//회원가
+	public int mem_insert(MemberDTO mDto) {
+		sqlSession = sqlSessionFactory.openSession(true);
+		
+		try {
+			result = sqlSession.insert("mem_insert", mDto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			sqlSession.close();
+		}
+		return result;
+	}
 	
 	// 회원정보 수정 (pw 제외)
-	 public int memUpdate(MemberDTO mDto) {
-		 sqlSession = sqlSessionFactory.openSession(true);
-		 
-		 try {
-			result = sqlSession.update("memUpdate", mDto);
-		 } catch(Exception e) {
-			 e.printStackTrace();
-		 } finally {
-			 sqlSession.close();
+		 public int memUpdate(MemberDTO mDto) {
+			 sqlSession = sqlSessionFactory.openSession(true);
+			 
+			 try {
+				result = sqlSession.update("mem_update", mDto);
+			 } catch(Exception e) {
+				 e.printStackTrace();
+			 } finally {
+				 sqlSession.close();
+			 }
+			 return result;
 		 }
-		 return result;
-	 }
-	 
-	 public MemberDTO memOne(String id) {
-		 sqlSession = sqlSessionFactory.openSession(true);
-		 
-		 try {
-			mDto = sqlSession.selectOne("memOne", id);
-		 } catch(Exception e) {
-			 e.printStackTrace();
-		 } finally {
-			 sqlSession.close();
+	
+		
+		public MemberDTO memOne(String id) {
+			 sqlSession = sqlSessionFactory.openSession(true);
+			 
+			 try {
+				mDto = sqlSession.selectOne("memOne", id);
+			 } catch(Exception e) {
+				 e.printStackTrace();
+			 } finally {
+				 sqlSession.close();
+			 }
+			 return mDto;
 		 }
-		 return mDto;
-	 }
-	 
-	 //비밀번호 재설정: 현재 비밀번호가 입력한 비밀번호가 일치하는지 확인
-	 public boolean pwCheck(String id, String pw) {
-		 sqlSession = sqlSessionFactory.openSession();
-		 HashMap<String, String> map = new HashMap<>();
-		 
-		 try {
-			 map.put("id", id);
-			 map.put("pw", pw);
-			result = sqlSession.selectOne("pwcheck", map);
-			
-			if (result == 1) {
-				flag=true;
-			}else {
-				flag=false;
+		
+		// 비밀번호 재설정
+		// : 입력한 비밀번호가 현재 비밀번호와 일치하는지 판단
+		public boolean pwCheck(String id, String pw) {
+			sqlSession = sqlSessionFactory.openSession();
+			HashMap<String, String> map = new HashMap<>();
+			map.put("id", id);
+			map.put("pw", pw);
+			try {
+				result = sqlSession.selectOne("pwCheck", map);
+				
+				if(result == 1) {
+					flag = true;
+				} else {
+					flag = false;
+				}
+				
+				System.out.println("flag >>>>" + flag);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				sqlSession.close();
 			}
-			
-			System.out.println("flag>>>" + flag);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			sqlSession.close();
+			return flag;
 		}
-		 return flag;
-	 }
-	 
-	 //비밀번호 재설정
-	 public int pwUpdate(String id, String pw) {
-		 sqlSession = sqlSessionFactory.openSession(true);
-		 HashMap<String, String> map = new HashMap<>();
-		 map.put("id", id);
-		 map.put("pw", pw);
-		 try {
-			result = sqlSession.update("pwUpdate", map);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			sqlSession.close();
-		}
-		 return result;
-	 }
+		
+		 //비밀번호 재설정
+		 public int pwUpdate(String id, String pw) {
+			 sqlSession = sqlSessionFactory.openSession(true);
+			 
+			 mDto.setId(id);
+			 mDto.setPw(pw);
+			 
+			 try {
+				result = sqlSession.update("pwUpdate", mDto);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				sqlSession.close();
+			}
+			 return result;
+		 }
+	
 	 
 	 // 회원 탈퇴(처치해버림)
 	 public int memDelete(String id) {
@@ -132,11 +149,4 @@ public class MemberDAO {
 		}
 		 return result;
 	 }
-	
-	
-	
-	
-	
-	
-	
 }

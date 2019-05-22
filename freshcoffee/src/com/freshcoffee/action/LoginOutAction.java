@@ -7,26 +7,28 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.json.simple.JSONObject;
 
-public class LogoutAction implements Action {
-
+public class LoginOutAction implements Action {
 	@Override
 	public ActionForward excute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		
-		if (session != null) {
-			//session  초기화
+		if(session != null) {
+			// Session을 초기화
 			session.invalidate();
 		}
 		
-		JSONObject jObj = new JSONObject();
-		response.setContentType("application/x-json; charset=UTF-8");
-		response.getWriter().print(jObj);
-	
-			
-		return null;
-	}
+		String referer = request.getHeader("referer"); // 나의 페이지 바로 이전 페이지의 주소를 알려줌
+		
+		System.out.println("url: "+ referer);
+		
+		String url = referer;
+		ActionForward forward = new ActionForward();
+		forward.setPath(url);
+		forward.setRedirect(true);
+		
+		return forward;
 
+	}
 }

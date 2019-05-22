@@ -21,11 +21,12 @@ public class IndexAction implements Action {
 		
 		ProductDAO pDao = ProductDAO.getInstance();
 		List<ProductDTO> bList = pDao.bestList();
+//		List<ProductDTO> nList = pDao.newList();
 		
-		for (ProductDTO productDTO : bList) {
-			System.out.println(productDTO.getP_img());
-			System.out.println(productDTO.getP_name());
-		}
+//		for (ProductDTO productDTO : bList) {
+//			System.out.println(productDTO.getP_img());
+//			System.out.println(productDTO.getP_name());
+//		}
 		
 		request.setAttribute("bestList", bList);
 		
