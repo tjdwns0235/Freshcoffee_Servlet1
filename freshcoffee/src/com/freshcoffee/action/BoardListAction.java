@@ -7,6 +7,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.freshcoffee.dao.BoardDAO;
+import com.freshcoffee.dto.BoardDTO;
+import com.freshcoffee.dto.CriteriaDTO;
+import com.freshcoffee.dto.PageMakerDTO;
+
 
 public class BoardListAction implements Action {
 

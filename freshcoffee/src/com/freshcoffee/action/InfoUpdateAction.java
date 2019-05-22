@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.freshcoffee.dao.MemberDAO;
 import com.freshcoffee.dto.MemberDTO;
 
 public class InfoUpdateAction implements Action {
@@ -17,6 +18,7 @@ public class InfoUpdateAction implements Action {
 		String url = "member/info_update.jsp";
 		int result;
 		MemberDTO mDto = new MemberDTO();
+		MemberDAO mDao = new MemberDAO();
 		
 		// 로그인 된 유저만 회원수정 가능
 		HttpSession session = request.getSession();

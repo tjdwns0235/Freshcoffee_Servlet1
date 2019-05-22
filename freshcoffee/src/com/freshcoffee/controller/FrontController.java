@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.freshcoffee.action.Action;
 import com.freshcoffee.action.ActionForward;
+import com.freshcoffee.action.BoardViewAction;
+import com.freshcoffee.action.CommentListAction;
 import com.freshcoffee.action.ConstractAction;
 import com.freshcoffee.action.DropMemberAction;
 import com.freshcoffee.action.DropMemberPlayAction;
@@ -104,6 +106,12 @@ public class FrontController extends HttpServlet {
 			forward = action.excute(request,response);
 		}else if (command.contentEquals("/dropMemberPlay.freshcoffee")) {
 			action = new DropMemberPlayAction();
+			forward = action.excute(request,response);
+		}else if (command.contentEquals("/boardview.freshcoffee")) {
+			action = new BoardViewAction();
+			forward = action.excute(request,response);
+		}else if (command.contentEquals("/commentlist.freshcoffee")) {
+			action = new CommentListAction();
 			forward = action.excute(request,response);
 		}
 		

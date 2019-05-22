@@ -15,13 +15,18 @@ public class MemberDAO {
 
 	SqlSession sqlSession;
 	boolean flag = false;
-	private MemberDAO(){}
+	public MemberDAO(){}
 	// 외부에서 빌려서 사용할 객체 생성(instance)
 	private static MemberDAO instance = new MemberDAO();
 	//외부에서 getInstance() 를 호출하면 객체를 빌려줌
 	public static MemberDAO getInstance() {
 		return instance;
 	}
+	
+	
+	
+
+
 	//회원가입 ID중복체크(Ajax)
 	public String idCheck(String id) {
 		//19. mybatis를 사용하기 위해 sqlSession을 빌려옴
