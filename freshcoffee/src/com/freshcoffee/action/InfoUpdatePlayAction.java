@@ -34,11 +34,11 @@ public class InfoUpdatePlayAction implements Action {
 		
 		MemberDTO mDto = new MemberDTO(id, name, phone, email, email_url, zipcode, addr1, addr2, bir1, bir2, bir3);
 		MemberDAO mDao = MemberDAO.getInstance();
-		int result = mDao.mem_update(mDto);
+		int result = mDao.memUpdate(mDto);
 		
 		if(result > 0) {
 			System.out.println("수정 성공");
-			mDto = mDao.mem_one(id);
+			mDto = mDao.memOne(id);
 			HttpSession session = request.getSession();
 			session.removeAttribute("loginUser");
 			session.setAttribute("loginUser", mDto);
