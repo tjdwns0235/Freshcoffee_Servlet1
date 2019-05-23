@@ -31,7 +31,6 @@ public List<ProductDTO> bestList() {
 	try {
 		List = sqlSession.selectList("bestList");
 		
-		
 	} catch (Exception e) {
 		e.printStackTrace();
 	}finally {

@@ -8,9 +8,7 @@
 	<properties resource="com/freshcoffee/mybatis/db.properties"/> 
 	
 	<!-- 별명 부여 -->
-	<typeAliases>
-		<typeAlias type="com.freshcoffee.dto.ProductDTO" alias="ProductDTO"/>
-	</typeAliases>
+	
 	
 
   <environments default="development">

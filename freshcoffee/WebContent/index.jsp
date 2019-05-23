@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ include file="../include/header.jsp" %>
+<%@include file="include/header.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,90 +8,7 @@
 <title>Insert title here</title>
 <style type="text/css">
 		@import url('https://fonts.googleapis.com/css?family=Cute+Font');
-		 .inner_header2 ul > li  {
-			float: left;
-			text-align: center;
-			margin: 0px;
-			height: 85px;
-		}
-		.inner_header2 {
-			padding: 0;
-			max-width: 1440px;
-			margin: 0 auto;
-			height: 85px;
-
-		}
-		.inner_header2 > ul {
-			display: flex;
-			justify-content: space-between;
-		}
-		/*.inner_header2 > ul> li > a {
-			text-decoration: none;
-			font-size: 23px;
-			height: 85px;
-			margin: 0 60px;
-			
-		}*/
-			
-		.inner_header2 ul  li  a {
-			text-decoration: none;
-			position: relative;
-			color: #363636;
-			font-weight: 20px;
-			font-family: sans-serif;
-			display: block;
-			overflow: hidden;
-			transition: 0.4s all;
-			line-height: 85px;
-			
-		}
-		.li1 {
-			
-			text-decoration: none;
-			font-size: 23px;
-			height: 85px;
-			margin: 0 60px;
-		}
-		
-
-		
-		.inner_header2 ul li > a:before {
-			content: '';
-			width: 500px;
-			position: absolute;
-			border-bottom: 2px solid #484848;
-			bottom: 0;
-			right: 1000px;
-			transition: 0.4s all;
-		}
-		.inner_header2 ul li a:hover:before {
-			right: 0;
-		}
-		.dropdown1 > a {
-			/*width: 100px;*/
-			margin: 0 auto;
-			background-color: #FADAD8;
-			font-size: 20px;
-		}
-		.dropdown1 > a:hover {
-			transform: scale(1.1);
-		}
-		.dropdown1 {
-			background-color: white;
-			box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.05);
-			z-index: 5;
-			display: none;
-			color:;
-			/*position:absolute;*/
-		}
-
-		.inner_header2 > ul > li:hover .dropdown1 {
-			display: block;
-				
-		}
-		.inner_header2 > ul > li:hover .a {
-			background-color: #FADAD8;
-		}
+		 
 		.bodyall {
 			width: 100%;
 		}
@@ -191,66 +108,7 @@
 	
 	 
 
-	<nav>
-		<div class="header_nav">
-			
-			<div class="inner_header2">
-				<ul>
-					
-					<li><a href="#" class="li1">북아메리카</a>
-						<div class="dropdown1">
-							<a href="#" >멕시코</a>
-							<a href="#">하와이</a>
-						</div>
-					</li>
-					
-					<li><a href="#" class="li1">중앙/남아메리카</a>
-						<div class="dropdown1">
-							<a href="#">과테말라</a>
-							<a href="#">도미니카</a>
-							<a href="#">볼리비아</a>
-							<a href="#">브라질</a>
-							<a href="#">엘살바도르</a>
-							<a href="#">자메이카</a>
-							<a href="#">코스타리카</a>
-							<a href="#">콜롬비아</a>
-							<a href="#">파나마</a>
-						</div>
-					</li>
-					
-					<li><a href="#" class="li1">아시아</a>
-					<div class="dropdown1">
-							<a href="#">베트남</a>
-							<a href="#">인도네시아</a>
-						</div>
-					</li>
-					
-					<li><a href="#" class="li1">아프리카</a>
-						<div class="dropdown1">
-							<a href="#">에티오피아</a>
-							<a href="#">케냐</a>
-							<a href="#">탄자니아</a>
-						</div>
-					</li>
-					
-					<li><a href="#" class="li1">오세아니아</a>
-						<div class="dropdown1">
-							<a href="#">파푸아뉴기니</a>
-						</div>
-					</li>
-					
-					<li><a href="#" class="li1">자주하는질문</a>
-						<div class="dropdown1">
-							<a href="#">Q & A</a>
-							<a href="#">문의하기</a>
-						</div>
-					</li>
-
-					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+	<
 	<section>
 	   <div class="bodyall">
 		 	<div class="bodycontent">

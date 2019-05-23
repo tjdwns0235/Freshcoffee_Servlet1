@@ -9,6 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Q & A 상세게시판</title>
+<script type="text/javascript" src="${path}/smarteditor/service/js/HuskyEZCreator.js" charset="utf-8"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 <style type="text/css">
 	a {text-decoration: none;}
@@ -383,12 +384,7 @@
 			</div>		
 		</div>
 
-				<div class="reply_login" id="reply_nologin">
-					<span class="reply_nologin_span">
-						<a href="#" class="reply_logina">로그인</a>
-						 "을 하시면 댓글을 등록할 수 있습니다."
-					</span>
-				</div>
+				
 			</div>
 		</div>
 
@@ -435,7 +431,7 @@
 		});
 		
 		function comment_list() {
-			alert("test");
+			/* alert("test"); */
 			$.ajax ({
 				type:"post",
 				url: "commentlist.freshcoffee",
@@ -445,6 +441,52 @@
 				}
 			});
 		}
+		
+		$(document).on("click", ".reply_btn", function(){
+			oEditors.getById["replyInsert"].exec("UPDATE_CONTENTS_FIELD", []);
+			var content = $("#replyInsert").val();
+		
+			
+			if (content == "<p><br></p>") {
+				//유효성 체크
+				$("#replyInsert").focus();
+				return false;
+			} else {
+				var bno = '${one.bno}';
+				$('#re_bno').val(bno);
+				$.ajax({
+					url: "replyAdd.freshcoffee",
+					type: "POST",
+					data: $("#frm_reply").serialize(),
+					contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+					success: function() {
+						comment_list();
+						$("#replyInsert"),val(""); // AJAX이므로 페이지 원복 하기때문에 댓글 등록에 등록하려고 했던 내용이 그대로 남아있기 때문에 없애줘야한다.
+					},
+					error: function() {
+						slert("System Error!!");
+					}
+				});
+			}
+		});
+		
+		
+	});
+	
+	$(document).on("click", ".reply_del", function(){
+		var rno = $(this).attr("data_num");
+		var bno = "${one.bno}";
+		
+		$.ajax({
+			url: "replyRemove.freshcoffee",
+			data: "rno=" + rno + "&bno=" + bno,
+			success: function(result) {
+				comment_list();
+			},
+			error: function() {
+				alert("System Error!!");
+			}
+		});
 	});
 
 </script>	

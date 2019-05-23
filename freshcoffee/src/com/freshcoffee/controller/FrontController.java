@@ -28,6 +28,8 @@ import com.freshcoffee.action.MemberPlayAction;
 import com.freshcoffee.action.PwCheckAction;
 import com.freshcoffee.action.PwUpdateAction;
 import com.freshcoffee.action.PwUpdatePlayAction;
+import com.freshcoffee.action.ReplyAddAction;
+import com.freshcoffee.action.ReplyRemoveAction;
 
 /**
  * Servlet implementation class FrontController
@@ -125,7 +127,14 @@ public class FrontController extends HttpServlet {
 		}else if (command.contentEquals("/commentlist.freshcoffee")) {
 			action = new CommentListAction();
 			forward = action.excute(request,response);
+		}else if (command.contentEquals("/replyAdd.freshcoffee")) {
+			action = new ReplyAddAction();
+			forward = action.excute(request,response);
+		}else if (command.contentEquals("/replyRemove.freshcoffee")) {
+			action = new ReplyRemoveAction();
+			forward = action.excute(request,response);
 		}
+		
 		
 		
 		

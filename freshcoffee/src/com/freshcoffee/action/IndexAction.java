@@ -30,6 +30,8 @@ public class IndexAction implements Action {
 		
 		request.setAttribute("bestList", bList);
 		
+		System.out.println(bList.toString());
+		
 		ActionForward forward = new ActionForward();
 		forward.setPath(url);
 		forward.setRedirect(false);

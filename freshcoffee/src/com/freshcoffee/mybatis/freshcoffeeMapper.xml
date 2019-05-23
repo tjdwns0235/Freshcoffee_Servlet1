@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.freshcoffee/mybatis.freshcoffeeMapper.xml">
+<mapper namespace="com/freshcoffee/mybatis.freshcoffeeMapper.xml">
 	<select id="bestList" resultType="com.freshcoffee.dto.ProductDTO">
 		<![CDATA[
 		SELECT *
@@ -18,7 +18,7 @@
 		SELECT *
 		FROM (SELECT * FROM tbl_product
 		      ORDER BY p_indate DESC)
-		WHERE rownum <=6
+		WHERE rownum <=3
 		]]>
 	</select>
 	<!--21.매개변수로 전달받은 id값을 sql문에 바인딩변수로 넣고 sql문을 실행 (DB로 이동)  -->
@@ -130,9 +130,19 @@
 		WHERE bno = #{bno}
 	</update>
 	
-	<select id="replyList" parameterType="String" resultType="com.freshcoffee.sto.replyDTO">
+	<select id="replyList" parameterType="String" resultType="com.freshcoffee.dto.ReplyDTO">
 		SELECT * FROM tbl_reply
 		WHERE bno = #{bno}
 	</select>
+	
+	<insert id="replyAdd" parameterType="com.freshcoffee.dto.ReplyDTO">
+		INSERT INTO tbl_reply(rno, content, )
+		VALUES(seq_reply)
+	</insert>
+	
+	<delete id="replyRemove" parameterType="int">
+		DELETE FROM tbl_reply
+		WHERE rno = #{rno}
+	</delete>
 	
 </mapper>
