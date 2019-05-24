@@ -7,9 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.freshcoffee.dao.MemberDAO;
-import com.freshcoffee.dto.MemberDTO;
-
 public class InfoUpdateAction implements Action {
 
 	@Override
