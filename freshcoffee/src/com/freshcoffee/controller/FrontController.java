@@ -28,6 +28,9 @@ import com.freshcoffee.action.MemberPlayAction;
 import com.freshcoffee.action.PwCheckAction;
 import com.freshcoffee.action.PwUpdateAction;
 import com.freshcoffee.action.PwUpdatePlayAction;
+import com.freshcoffee.action.RegisterAjaxAction;
+import com.freshcoffee.action.RegisterPlayAction;
+import com.freshcoffee.action.RegisterViewAction;
 import com.freshcoffee.action.ReplyAddAction;
 import com.freshcoffee.action.ReplyRemoveAction;
 
@@ -133,7 +136,17 @@ public class FrontController extends HttpServlet {
 		}else if (command.contentEquals("/replyRemove.freshcoffee")) {
 			action = new ReplyRemoveAction();
 			forward = action.excute(request,response);
+		}else if (command.contentEquals("/registerAjax.freshcoffee")) {
+			action = new RegisterAjaxAction();
+			forward = action.excute(request,response);
+		}else if (command.contentEquals("/registerView.freshcoffee")) {
+			action = new RegisterViewAction();
+			forward = action.excute(request,response);
+		}else if (command.contentEquals("/register.freshcoffee")) {
+			action = new RegisterPlayAction();
+			forward = action.excute(request,response);
 		}
+		
 		
 		
 		

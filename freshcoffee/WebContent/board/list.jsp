@@ -486,6 +486,24 @@
 			return false;
 		}
 		location.href="${path}/boardList.freshcoffee?search_option="+search_option+"&keyword="+keyword;
+		$("#boardAdd").on("click", function(){
+			$.ajax({
+				url: "registerAjax.freshcoffee",
+				type: "POST",
+				dataType: "json",
+				success: function() {
+					if (data.message == "1") {
+						location.gref ="registerView.freshcoffee"
+					}else {
+						$("#modal_all"),css("disply", "block");
+						$("#err_msg").css("display". "block").text("로그인이 필요한 서비스입니다");//로그인 창의 에러메세지에서 출력되어야 함
+					}
+				},
+				error: function() {
+					slert("System Error!!");
+				}
+			});
+		});
 	});
 </script>
 </body>

@@ -1,5 +1,6 @@
 package com.freshcoffee.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -101,6 +102,31 @@ public class BoardDAO {
 		}
 	}
 	
+	// 댓글 등록 또는 삭제시 해당게시글 replycnt +1 or -1
+	public void replyCntUpdate(String bno, String flag) {
+		sqlSession = sqlSessionFactory.openSession();
+		try {
+			HashMap<String, String> map = new HashMap<>();
+			map.put("bno", bno);
+			map.put("flag", flag);
+			sqlSession.update("replyCntUpdate", map);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+		
+	}
 	
-
+	// 게시글 등록
+	public void registerAdd(BoardDTO bDto) {
+		sqlSession = sqlSessionFactory.openSession();
+		try {
+			sqlSession.insert("registerAdd", bDto);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			sqlSession.close();
+		}
+	}
 }

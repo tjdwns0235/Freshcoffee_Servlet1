@@ -130,13 +130,26 @@
 		WHERE bno = #{bno}
 	</update>
 	
+	<update id="replyList">
+		UPDATE tbl_board
+		<if test="flag == plus">
+			SET replycnt == replycnt+1
+		</if>
+		<if test="flag == minus">
+			SET replycnt == replycnt-1
+		</if>
+		WHERE bno = #{bno}
+	</update>
+	
+	
+	<!--댓글 -->
 	<select id="replyList" parameterType="String" resultType="com.freshcoffee.dto.ReplyDTO">
 		SELECT * FROM tbl_reply
 		WHERE bno = #{bno}
 	</select>
 	
 	<insert id="replyAdd" parameterType="com.freshcoffee.dto.ReplyDTO">
-		INSERT INTO tbl_reply(rno, content, )
+		INSERT INTO tbl_reply(rno, content,)
 		VALUES(seq_reply)
 	</insert>
 	
@@ -144,5 +157,12 @@
 		DELETE FROM tbl_reply
 		WHERE rno = #{rno}
 	</delete>
+	
+	<insert id="registerAdd" parameterType="com.freshcoffee.dto.BoardDTO">
+		INSERT INTO tbl_board(writer,content,title)
+		VALUES(seq_reply)
+	</insert>
+	
+	
 	
 </mapper>

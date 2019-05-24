@@ -7,8 +7,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-		@import url('https://fonts.googleapis.com/css?family=Cute+Font');
-		 
+		@import url("https://fonts.googleapis.com/css?family=Cute+Font");
 		.bodyall {
 			width: 100%;
 		}
@@ -26,7 +25,7 @@
 			margin-top: 30px;
 
 		}
-		.new_product > span {
+		.product_title > span {
 			font-size: 28px;
 			font-weight: 600;
 			font-family: 'Source Serif Pro', serif;
@@ -60,10 +59,10 @@
 		#topBtn:hover {
 			background: #d6ecfa;
 		}
-		.new_product_box {
+		.product_box {
 			flex: 1;
 		}
-		.new_product_menu {
+		.product_menu {
 			/*border: 1px solid blue;*/
 			width: 1200px;
 			margin: 0 auto;
@@ -71,7 +70,7 @@
 			height: auto;
 			justify-content: space-evenly;
 		}
-		.new_product_menu img {
+		.product_menu img {
 			width: 240px;
 			height: 230px;
 			flex: 1;
@@ -105,48 +104,38 @@
 	</style>
 </head>
 <body>
-	
-	 
-
-	<
 	<section>
 	   <div class="bodyall">
 		 	<div class="bodycontent">
 				<img src="${path}/img/coffee2.JPG" alt="커피홈1">
-
-				
-					
-					<div class="new_product"><span>Best Product</span></div>
-	
-						
-						<div class="new_product_menu">
+					<div class="product_title"><span>Best Product</span></div>
+						<div class="product_menu">
 								<c:forEach items="${bestList}" var="best">
-							<div class="new_product_box">
-				 				<a href="#"><img src="${path}/img/${best.p_img}" alt="상품이미지 케냐"></a>
-				 				<p class="name">
-				 					<a href="#" class="click">
-				 						<strong class="title_displayitem">
+									<div class="product_box">
+				 						<a href="#"><img src="${path}/img/${best.p_img}" alt="상품이미지 케냐"></a>
+				 							<p class="name">
+			 								<a href="#" class="click">
+			 								<strong class="title_displayitem">
 				 							<span>상품명</span>
 				 								:
-				 						</strong>
-				 						<span class="coffename">${best.p_name}</span>
-				 					</a>
-				 				</p>
+				 							</strong>
+				 							<span class="coffename">${best.p_name}</span>
+				 							</a>
+				 							</p>
 
-				 				<li class="displayitem_price">
-				 					<strong class="title_displayitem">
-				 						<span>판매가</span>
-				 						:
-				 					</strong>
-				 					<span>${best.p_price}</span>
-				 				</li>
-				 		   		</div>
-				 		   </div>
-				 		   		</c:forEach>
-
-		 
-		</div>
-		  </div>    
+					 					<li>
+						 					<strong class="title_displayitem">
+						 						<span>판매가</span>
+						 						:
+						 					</strong>
+						 					<span>${best.p_price}</span>
+					 					</li>
+			 		   				</div>
+		 		   				</c:forEach>
+		 		   		</div>
+					</div>
+			  </div>    
+			</div>
 	</section>
 </body>
 </html>
