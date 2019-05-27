@@ -30,6 +30,7 @@ public List<ProductDTO> bestList() {
 	sqlSession = sqlSessionFactory.openSession();
 	try {
 		List = sqlSession.selectList("bestList");
+		System.out.println(List);
 		
 	} catch (Exception e) {
 		e.printStackTrace();
@@ -38,5 +39,6 @@ public List<ProductDTO> bestList() {
 	}
 	
 	return List;
+	
 }
 }

@@ -12,7 +12,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>게시판 등록</title>
+<title>게시판 수정</title>
 <style type="text/css">
 	.content {
 		border: 1px solid #fec9c9;
@@ -102,7 +102,7 @@
 		<div class="box">
 			<form action="registerPlay.freshcoffee" name="" method="POST" enctype="multipart/form-data"> <!--첨부파일 보내려면 방식이 POST여야 함!  -->
 				<div class="insert_title">
-					<h3>Q & A</h3>
+					<h3>Q & A 글 수정</h3>
 					<label for="title"><h4>제목</h4></label>
 					<span class="title_input"><input type="text" name="title" id="title" placeholder="제목을입력해주세요"></span>
 					<span class="boardinsert_err"></span>
@@ -168,7 +168,7 @@
 			alert("로그인을 해주세요");
 		}else {
 			$.ajax({
-				url: "register.freshcoffee",
+				url: "modify.freshcoffee",
 				type: "POST",
 				data: $("#frm_reply").serialize(),
 				contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -210,14 +210,20 @@
 			}
 		}
 		
-		$(document).on("click", '#close_file_btn', function(){
-			$("#uploadfile").replaceWith($("#uploadfile").clone(true));
-			$("#uploadfile").val("");
-			$('#now_file_size').text("");
-			$("#file_name").text("선택된 파일 없음");
-			$("#close_file_btn").css("display", "none");
-		});
-		
+	
+	});
+	
+	$(document).on("click", '#close_file_btn', function(){
+		$("#uploadfile").replaceWith($("#uploadfile").clone(true));
+		$("#uploadfile").val("");
+		$('#now_file_size').text("");
+		$("#file_name").text("선택된 파일 없음");
+		$("#close_file_btn").css("display", "none");
+	});
+	
+	$(document).on('click', 'close_basic_btn', function(){
+		$('.file_msg').css('display', 'block');
+		$('.basic_files').css('color', '#AAA').css('text-decoration', 'line-through');
 	});
 </script>
 </body>

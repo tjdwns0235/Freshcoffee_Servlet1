@@ -15,7 +15,7 @@
 		<div id="modal_login">
 			<header>
 				<a href="#" id="title_img">
-					<img src="../img/freshcoffee2.png" alt="커피 로고">
+					<img src="${path}/img/freshcoffee2.png" alt="커피 로고">
 				</a>
 			</header>
 			

@@ -192,6 +192,19 @@
 		VALUES(seq_reply)
 	</insert>
 	
+	<insert id="registerAdd" parameterType="com.freshcoffee.dto.BoardDTO">
+		INSERT INTO tbl_board(bno, title,content,writer,filename, filesize)
+	</insert>
+	
+	<select id="seqVal" resultType="int">
+	
+	</select>
+	
+	<delete id="removeBoard" parameterType="String">
+		DELETE FROM tbl_board
+		WHERE bno = #{bno}
+	</delete>
+	
 	
 	
 </mapper>
