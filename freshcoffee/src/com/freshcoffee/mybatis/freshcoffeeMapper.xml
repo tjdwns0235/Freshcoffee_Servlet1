@@ -27,7 +27,18 @@
 		WHERE id = #{id}
 	</select>
 	
-	<update id="memUpdate" parameterType="com.freshcoffee.dto.MemberDTO">
+	<insert id="mem_insert" parameterType="com.freshcoffee.dto.MemberDTO">
+		INSERT INTO tbl_member(id, pw, name, phone, email, zipcode, addr1, addr2)
+		VALUES(#{id}, #{pw}, #{name}, #{phone}, #{email}, #{zipcode}, #{addr1}, #{addr2})
+	</insert>
+	
+	<select id="loginCheck" parameterType="com.freshcoffee.dto.MemberDTO" resultType="com.freshcoffee.dto.MemberDTO">
+		SELECT * FROM tbl_member
+		WHERE id = #{id} AND pw = #{pw}
+	</select>
+	
+	
+	<update id="mem_update" parameterType="com.freshcoffee.dto.MemberDTO">
 		UPDATE tbl_member SET
 			name = #{name},
 			phone = #{phone},
@@ -38,7 +49,7 @@
 		WHERE id = #{id}
 	</update>
 	
-	<select id="memOne" parameterType="String" resultType="com.freshcoffee.dto.MemberDTO">
+	<select id="mem_select" parameterType="String" resultType="com.freshcoffee.dto.MemberDTO">
 		SELECT * FROM tbl_member
 		WHERE id = #{id}
 	</select>
@@ -53,10 +64,12 @@
 			pw = #{pw}
 		WHERE id = #{id}
 	</update>
-	<delete id="memDelete" parameterType="String">
+	
+	<delete id="mem_delete" parameterType="String">
 		DELETE FROM tbl_member
 		WHERE id = #{id}
 	</delete>
+	
 	<select id="totalCount" resultType="int">
 		SELECT COUNT(bno)
 		FROM tbl_board
@@ -77,7 +90,7 @@
 			AND writer LIKE '%'||#{keyword}||'%'
 		</if>
 	</select>
-	<select id="listAll">
+	<select id="listAll" resultType="com.freshcoffee.dto.BoardDTO" >
 		SELECT * 
 		FROM (SELECT rownum rnum, a.*
 			FROM (SELECT *
@@ -124,11 +137,22 @@
 		WHERE bno = #{bno}
 	</select>
 	
-	<update id="viewCnt">
+	<update id="viewCnt" parameterType="String">
 		UPDATE tbl_board
 		SET viewcnt = viewcnt + 1
 		WHERE bno = #{bno}
 	</update>
+	
+	<update id="goodCnt" parameterType="String">
+		UPDATE tbl_board
+		SET goodcnt = goodcnt + 1
+		WHERE bno = #{bno}
+	</update>
+	
+	<insert id="boardGoodCnt" parameterType="hashmap">
+		INSERT INTO tbl_goodcnt (id, bno)
+		VALUES (#{id}, #{bno})
+	</insert>
 	
 	<update id="replyList">
 		UPDATE tbl_board
@@ -143,9 +167,14 @@
 	
 	
 	<!--댓글 -->
-	<select id="replyList" parameterType="String" resultType="com.freshcoffee.dto.ReplyDTO">
+	<select id="select_goodCnt" parameterType="String" resultType="com.freshcoffee.dto.ReplyDTO">
 		SELECT * FROM tbl_reply
 		WHERE bno = #{bno}
+	</select>
+	
+	<select id="sel_goodCnt" parameterType="hashmap" resultType="String">
+		SELECT bid FROM tbl_goodcnt
+		WHERE bid = #{bid} AND bno = #{bno}
 	</select>
 	
 	<insert id="replyAdd" parameterType="com.freshcoffee.dto.ReplyDTO">

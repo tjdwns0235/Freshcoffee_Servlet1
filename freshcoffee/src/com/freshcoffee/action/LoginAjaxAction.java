@@ -19,11 +19,11 @@ public class LoginAjaxAction implements Action {
 		// Session(웹 저장소)을 사용하기 위해 session 객체 생성
 		HttpSession session = request.getSession();
 		
-		String bid = request.getParameter("id");
-		String bpw = request.getParameter("pw");
+		String id = request.getParameter("id");
+		String pw = request.getParameter("pw");
 		
 		LoginDAO lDao = LoginDAO.getInstance();
-		MemberDTO mDto = lDao.loginCheck(bid, bpw);
+		MemberDTO mDto = lDao.loginCheck(id, pw);
 		
 		String message = "";
 		

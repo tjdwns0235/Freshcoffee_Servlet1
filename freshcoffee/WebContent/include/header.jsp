@@ -88,7 +88,7 @@
 						<li><a href="#" class="mypage">마이페이지</a>
 							<div class="dropdown">
 							     <a href="#" >나의 주문</a>
-							     <a href="#" >장비구니</a>
+							     <a href="#" >장구니</a>
 							     <c:choose>
 								     <c:when test="${!empty sessionScope.loginUser}">
 									     <a href="${path}/pwUpdate.freshcoffee">비밀번호 수정</a>
@@ -180,6 +180,58 @@
 					$('#topBtn').fadeOut();
 				}
 			});
+			
+			$("#btn_login").click(function(){
+				
+				var id = $.trim($('#inputid').val());
+				var pw = $.trim($('#inputpw').val());
+				
+				var regEmpty = /\s/g;
+				
+				// 1. null 체크
+				// 2. 공백 체크
+				
+				if(id == null || id.length == 0) {
+					$('.err_code').eq(0).text('필수 정보입니다.')
+								 .css('display', 'block');
+					return false;
+				} else if(id.match(regEmpty)) {
+					$('.err_code').eq(0).text('공백 없이 입력해주세요.')
+					 			 .css('display', 'block');
+					return false;
+				}
+				
+				if(pw == null || pw.length == 0) {
+					$('.err_code').eq(1).text('필수 정보입니다.')
+								 .css('display', 'block');
+					return false;
+				} else if(pw.match(regEmpty)) {
+					$('.err_code').eq(1).text('공백 없이 입력해주세요.')
+					 			 .css('display', 'block');
+					return false;
+				}
+				
+				$.ajax({
+					url: "login.freshcoffee",
+					type: "POST",
+					dataType: "json",
+					data: "id="+id+"&pw="+pw,
+					success: function(data) {
+						if(data.message == "1") {
+							location.reload();			
+						} else if(data.message == "-1") {
+							$('#inputid').select();
+							$('.err_code').text('회원 아이디 또는 비밀번호가 일치하지 않습니다.')
+							             .css('display', 'block');
+						}
+					},
+					error:function() {
+						alert("System Error♨");
+					}
+				});
+			});
+			
+			
 			$('#topBtn').click(function(event) {
 				$('html, body').animate({scrollTop : 0}, 500);
 			});

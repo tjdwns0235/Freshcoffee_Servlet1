@@ -27,8 +27,8 @@ public class LoginDAO {
 		sqlSession = sqlSessionFactory.openSession();
 		
 		MemberDTO mDto = new MemberDTO();
-		mDto.setid(id);
-		mDto.setpw(pw);
+		mDto.setId(id);
+		mDto.setPw(pw);
 		
 		try {
 			mDto = sqlSession.selectOne("loginCheck", mDto);
