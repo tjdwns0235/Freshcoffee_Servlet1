@@ -345,7 +345,17 @@
 
 						<tr>
 							<th style="border-left: 0;">첨부파일</th>
-							<td colspan="2" style="border-right: 0;"></td>
+							<td colspan="2" style="border-right: 0;">${one.filename}
+							<c:if test="${one.filesize > 0}">
+								<div id="download">
+									<a href="download.freshcoffee?file=${one.filename}">
+										(<fmt:formatNumber type="number" pattern="0.00" value="${one.filesize / 1024/ 1024}">
+										</fmt:formatNumber>)
+									</a>
+								</div>
+							</c:if>
+							
+							</td>
 							<td style="border-right: 0; border-left: 0; text-align: center;">
 								<i class="fa fa-eye"></i>5
 								<i class="fa fa-heart"></i>4

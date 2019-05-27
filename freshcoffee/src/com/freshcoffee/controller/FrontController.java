@@ -14,6 +14,7 @@ import com.freshcoffee.action.ActionForward;
 import com.freshcoffee.action.BoardViewAction;
 import com.freshcoffee.action.CommentListAction;
 import com.freshcoffee.action.ConstractAction;
+import com.freshcoffee.action.DownloadAction;
 import com.freshcoffee.action.DropMemberAction;
 import com.freshcoffee.action.DropMemberPlayAction;
 import com.freshcoffee.action.IdCheckAction;
@@ -142,10 +143,14 @@ public class FrontController extends HttpServlet {
 		}else if (command.contentEquals("/registerView.freshcoffee")) {
 			action = new RegisterViewAction();
 			forward = action.excute(request,response);
-		}else if (command.contentEquals("/register.freshcoffee")) {
+		}else if (command.contentEquals("/registerPlay.freshcoffee")) {
 			action = new RegisterPlayAction();
 			forward = action.excute(request,response);
+		}else if (command.contentEquals("/download.freshcoffee")) {
+			action = new DownloadAction();
+			forward = action.excute(request,response);
 		}
+		
 		
 		
 		
