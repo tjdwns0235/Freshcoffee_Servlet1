@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com/freshcoffee/mybatis.freshcoffeeMapper.xml">
+<mapper namespace="com/freshcoffee/dao/ProductDao">
 	<select id="bestList" resultType="com.freshcoffee.dto.ProductDTO">
 		<![CDATA[
 		SELECT *

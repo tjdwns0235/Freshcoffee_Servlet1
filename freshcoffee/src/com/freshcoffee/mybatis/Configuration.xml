@@ -23,6 +23,6 @@
     </environment>
   </environments>
   <mappers>
-    <mapper resource="com/freshcoffee/mybatis/freshcoffeeMapper.xml"/>
+    <mapper resource="classpath:com/freshcoffee/mybatis/freshcoffeeMapper.xml"/>
   </mappers>
 </configuration>

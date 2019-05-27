@@ -19,6 +19,8 @@ public class IndexAction implements Action {
 			throws ServletException, IOException {
 		String url = "index.jsp";
 		
+		
+		System.out.println("index,exec");
 		ProductDAO pDao = ProductDAO.getInstance();
 		List<ProductDTO> bList = pDao.bestList();
 //		List<ProductDTO> nList = pDao.newList();

@@ -10,7 +10,7 @@ public class SqlMapConfig {
 	private static SqlSessionFactory sqlSessionFactory;
 	
 	static {
-		String resource = "com/freshcoffee/mybatis/Configuration.xml";
+		String resource =  "./Configuration.xml" ; //"classpath:src/com/freshcoffee/mybatis/Configuration.xml";
 		
 		try {
 			Reader reader = Resources.getResourceAsReader(resource);
