@@ -1,4 +1,4 @@
-package com.freshcoffee.action;
+package src.com.freshcoffee.action;
 
 import java.io.IOException;
 import java.util.List;
@@ -7,10 +7,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.freshcoffee.dao.BoardDAO;
-import com.freshcoffee.dto.BoardDTO;
-import com.freshcoffee.dto.CriteriaDTO;
-import com.freshcoffee.dto.PageMakerDTO;
+import src.com.freshcoffee.dao.BoardDAO;
+import src.com.freshcoffee.dto.BoardDTO;
+import src.com.freshcoffee.dto.CriteriaDTO;
+import src.com.freshcoffee.dto.PageMakerDTO;
 
 
 public class BoardListAction implements Action {

@@ -134,6 +134,10 @@
 				<span><input type="file" name="uploadfile" id="uploadfile" style="display:none">
 					<input type="button" class="btn btn-file" value="파일선택">
 					<span class ="files" id="file-name" style="height: 29px; border: none;">
+					<span class="files basic_files">${one.filename}</span>
+					<span class="file_msg">{첨부파일 삭제됨}</span>
+					<i class="fas fa-check open_file_btn"></i>
+					<i class="fas fa-times close_file_btn close_basic_btn"></i>
 					<span id="now_file_size">
 						<i class="fas fa-times" id="close_file_btn" style="display:none;"></i>
 					</span>
@@ -224,6 +228,10 @@
 	$(document).on('click', 'close_basic_btn', function(){
 		$('.file_msg').css('display', 'block');
 		$('.basic_files').css('color', '#AAA').css('text-decoration', 'line-through');
+	});
+	
+	$(document).click('.update_Btn')function(){
+		alert("test");
 	});
 </script>
 </body>

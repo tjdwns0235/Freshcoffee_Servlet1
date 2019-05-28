@@ -88,11 +88,6 @@ public class FrontController extends HttpServlet {
 			action = new IdCheckAction();
 			forward = action.excute(request,response);
 		}else if (command.contentEquals("/memberPlay.freshcoffee")) {
-			//15. IdcheckAction 클래스 객체 생성
-			//	  결과물: action 인스턴스
-			//	 action 인스터스를 활용하여 excute() 메서드 실행
-			// 	 매개변수로  Controller의 request와 response를 전송
-			//   이동
 			action = new MemberPlayAction();
 			forward = action.excute(request,response);
 		}else if(command.equals("/login.freshcoffee")) {
