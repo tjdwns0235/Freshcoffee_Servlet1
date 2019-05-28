@@ -1,4 +1,5 @@
-package com.freshcoffee.action;
+package src.com.freshcoffee.action;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -8,7 +9,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.freshcoffee.common.Constants;
 import com.freshcoffee.dao.BoardDAO;
 import com.freshcoffee.dto.BoardDTO;
 import com.oreilly.servlet.MultipartRequest;
@@ -46,7 +46,7 @@ public class RegisterPlayAction implements Action {
 		String title = multi.getParameter("title");
 		String content = multi.getParameter("content");
 		String writer = multi.getParameter("writer");
-		String filename = " ";ㅈ
+		String filename = " ";
 		int filesize = 0;
 		
 		
@@ -85,11 +85,14 @@ public class RegisterPlayAction implements Action {
 		BoardDAO bDao = BoardDAO.getInstance();
 		bDao.registerAdd(bDto);
 		
-		int bno = bDao.seqVal();
+//		int bno = bDao.seqVal();
 		
+		String url = "boardList.freshcoffee";
+		ActionForward forward = new ActionForward();
+		forward.setPath(url);
+		forward.setRedirect(true);
 		
-		
-		return null;
+		return forward;
 	}
 
 }

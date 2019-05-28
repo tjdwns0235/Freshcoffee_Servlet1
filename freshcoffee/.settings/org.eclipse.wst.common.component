@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
     <wb-module deploy-name="freshcoffee">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+<<<<<<< HEAD
+=======
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/"/>
+>>>>>>> 31be72f29dfa6b9d35c1ac019c3d9c0e2ef34e4c
         <property name="context-root" value="freshcoffee"/>
         <property name="java-output-path" value="/freshcoffee/build/classes"/>
     </wb-module>

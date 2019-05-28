@@ -423,6 +423,17 @@
 	</section>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript">
+	//뒤로가기 막기
+	/* history.pushState(null, null, location.href);
+	window.onpopstate = function () {
+		history.go(1);
+	} */
+	
+	history.pushState(null, document.title, location.href);
+	window.addEventListener('popstate', function(event){
+		history.pushState(null, document.title, '<%@=referer%>');
+		location.reload(); // 리프레쉬
+	});
 	$(document).ready(function(){
 		/*문서가 준비되면 댓글 목록을 조회하는 ajax 실행  */
 		comment_list();

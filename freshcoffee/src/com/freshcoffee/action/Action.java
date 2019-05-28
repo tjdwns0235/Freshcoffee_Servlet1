@@ -1,4 +1,4 @@
-package com.freshcoffee.action;
+package src.com.freshcoffee.action;
 
 import java.io.IOException;
 

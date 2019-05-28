@@ -1,4 +1,4 @@
-package com.freshcoffee.action;
+package src.com.freshcoffee.action;
 
 public class ActionForward {
 	

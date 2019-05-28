@@ -1,4 +1,4 @@
-package com.freshcoffee.action;
+package src.com.freshcoffee.action;
 
 import java.io.IOException;
 
@@ -7,8 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.freshcoffee.dao.BoardDAO;
-import com.freshcoffee.dto.BoardDTO;
+import src.com.freshcoffee.dao.BoardDAO;
+import src.com.freshcoffee.dto.BoardDTO;
 
 public class BoardViewAction implements Action {
 

@@ -205,6 +205,15 @@
 		WHERE bno = #{bno}
 	</delete>
 	
+	<update id="modifyBoard" parameterType="com.freshcoffee.dto.BoardDTO">
+		UPDATE tbl_board
+			SET title = #{title},
+				content = #{content},
+				filename = #{filename},
+				filesize = {filesize}
+			WHERE bno = #{bno} 
+	</update>
+	
 	
 	
 </mapper>

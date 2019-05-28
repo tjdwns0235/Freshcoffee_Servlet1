@@ -1,4 +1,4 @@
-package com.freshcoffee.common;
+package src.com.freshcoffee.common;
 
 public class Constants {
 	//파일이 업로드 되는 디렉토리
