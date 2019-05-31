@@ -1,4 +1,4 @@
-package com.freshcoffee.controller;
+package src.com.freshcoffee.controller;
 
 import java.io.IOException;
 
@@ -9,31 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.freshcoffee.action.Action;
-import com.freshcoffee.action.ActionForward;
-import com.freshcoffee.action.BoardViewAction;
-import com.freshcoffee.action.CommentListAction;
-import com.freshcoffee.action.ConstractAction;
-import com.freshcoffee.action.DownloadAction;
-import com.freshcoffee.action.DropMemberAction;
-import com.freshcoffee.action.DropMemberPlayAction;
-import com.freshcoffee.action.IdCheckAction;
-import com.freshcoffee.action.IndexAction;
-import com.freshcoffee.action.InfoUpdateAction;
-import com.freshcoffee.action.InfoUpdatePlayAction;
-import com.freshcoffee.action.LoginAjaxAction;
-import com.freshcoffee.action.LoginOutAction;
-import com.freshcoffee.action.LogoutAction;
-import com.freshcoffee.action.MemberAction;
-import com.freshcoffee.action.MemberPlayAction;
-import com.freshcoffee.action.PwCheckAction;
-import com.freshcoffee.action.PwUpdateAction;
-import com.freshcoffee.action.PwUpdatePlayAction;
-import com.freshcoffee.action.RegisterAjaxAction;
-import com.freshcoffee.action.RegisterPlayAction;
-import com.freshcoffee.action.RegisterViewAction;
-import com.freshcoffee.action.ReplyAddAction;
-import com.freshcoffee.action.ReplyRemoveAction;
+import src.com.freshcoffee.action.Action;
+import src.com.freshcoffee.action.ActionForward;
+
+
 
 /**
  * Servlet implementation class FrontController
