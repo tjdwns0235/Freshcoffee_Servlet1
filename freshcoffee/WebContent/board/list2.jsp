@@ -166,7 +166,7 @@
                                            </a>
                                      </c:forEach>
                                      
-                                     <c:if test="$map.pager.curBlock < map.pager.totBlock}">
+                                     <c:if test="${map.pager.curBlock < map.pager.totBlock}">
                                            <a href="${path}/board/list?curPage=${map.pager.blockEnd + 1}&sort_option=${map.sort_option}&keyword=${map.keyword}&search_option=${map.search_option}" class="pagination_i">
                                                 <i class="fas fa-angle-right"></i>
                                            </a>

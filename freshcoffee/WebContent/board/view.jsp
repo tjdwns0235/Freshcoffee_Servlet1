@@ -499,7 +499,7 @@
 		var bno = "${one.bno}";
 		
 		$.ajax({
-			url: "replyRemove.freshcoffee",
+			url: "${path}/reply/delete",
 			data: "rno=" + rno + "&bno=" + bno,
 			success: function(result) {
 				comment_list();
